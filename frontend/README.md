@@ -1,70 +1,144 @@
-# Getting Started with Create React App
+# ✨ Pulsefeed
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Pulsefeed** is an intelligent news summarization tool that leverages **AWS Bedrock's Titan large language model (LLM)** to extract concise insights from full-length news articles. Built with a clean **Spring Boot** backend and powered by **JSoup** for article parsing, Pulsefeed enables developers to quickly get meaningful summaries from any news URL.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🧠 Features
 
-### `npm start`
+- 📰 **Summarizes Real News Articles** by extracting readable content from URLs
+- ⚡ **Titan Model via AWS Bedrock** for high-quality text generation
+- 🔐 **Secure AWS Credentials** via `.env` and dotenv-java
+- 🌐 **REST API** built using Spring Boot
+- 🧼 Handles messy or HTML-heavy input with clean parsing using **JSoup**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📺 Demo Output Example
 
-### `npm test`
+![alt text](output_gif.gif)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Getting Started
 
-### `npm run build`
+### 🔧 Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Java 18+
+- Maven
+- AWS account with Bedrock access
+- `.env` file with:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```env
+AWS_ACCESS_KEY_ID=your_key
+AWS_SECRET_ACCESS_KEY=your_secret
+AWS_REGION=us-east-1
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+### 🖥️ Local Setup
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### 🔹 1. Clone the repository
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+git clone https://github.com/devp22/pulsefeed
+cd pulsefeed
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### 🔹 2. Create `.env` file
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Place the following at the root of the project:
 
-## Learn More
+```env
+AWS_ACCESS_KEY_ID=...
+AWS_SECRET_ACCESS_KEY=...
+AWS_REGION=us-east-1
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### 🔹 3. Run the API
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+mvn spring-boot:run
+```
 
-### Code Splitting
+> Server runs at: `http://localhost:8080`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🔌 API Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 📥 `GET /summary?url=<news-article-url>`
 
-### Making a Progressive Web App
+Returns a 4-sentence summary of the article.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### 🧪 Example:
 
-### Advanced Configuration
+```bash
+curl "http://localhost:8080/summary?url=https://example.com/article123"
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## 📁 Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
+.
+├── src
+│   ├── main
+│   │   ├── java/com/pulsefeed
+│   │   │   ├── controller     # API endpoints
+│   │   │   ├── service        # Titan model logic
+│   │   │   └── PulsefeedApplication.java
+│   │   └── resources
+│   │       ├── application.properties
+│   │       └── .env           # AWS credentials (excluded from git)
+├── pom.xml
+└── README.md
+```
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🤖 Model Details
+
+- **Model**: Titan Text G1
+- **Provider**: AWS Bedrock
+- **Settings**:
+  - `maxTokenCount`: 400
+  - `temperature`: 0.2
+
+---
+
+## 📌 Limitations
+
+- Bedrock models may **filter content** if inputs are too long, political, or ambiguous.
+- Input text must be cleaned to avoid malformed HTML or script tags.
+
+---
+
+## 🌱 Future Enhancements
+
+- 🧠 Use Claude or other models for comparison
+- 📊 Return token usage and cost metadata
+- 🌍 Host on AWS Lambda or ECS
+- 💾 Save summaries to database for logging/analysis
+- 🔒 Add IAM role-based auth for enterprise use
+
+---
+
+## 🙌 Acknowledgements
+
+- [AWS Bedrock](https://aws.amazon.com/bedrock/)
+- [Titan Foundation Model](https://aws.amazon.com/bedrock/amazon-models/titan/)
+- [JSoup](https://jsoup.org/)
+- [Spring Boot](https://spring.io/projects/spring-boot)
+
+---
+
+## 📜 License
+
+This project is open-source and available under the [MIT License](https://github.com/devp22/pulsefeed/LICENSE).
+
+---
+
+## 💻 Author
+
+Made with ❤️ by [Dev Patel](https://github.com/devp22)

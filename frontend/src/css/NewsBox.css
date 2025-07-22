@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap");
+
+.news-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: linear-gradient(145deg, #000, #060606);
+  border: 2px solid #0ff;
+  box-shadow: 0 0 20px #0ff;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  color: #0ff;
+  font-family: "Orbitron", sans-serif;
+  transition: transform 0.3s;
+  width: 50%;
+}
+
+.news-box:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 30px #0ff;
+}
+
+.news-image-container {
+  flex: 0 0 150px;
+  margin-right: 1rem;
+  border-right: 2px solid #0ff;
+  padding-right: 1rem;
+}
+
+.news-image {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+  filter: brightness(1.1) contrast(1.1);
+}
+
+.news-content-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.news-title {
+  font-size: 1.2rem;
+  color: #0ff;
+  margin: 0;
+}
+
+.news-description {
+  font-size: 0.95rem;
+  color: #8ff;
+}
+
+.news-buttons {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.view-button,
+.summary-button {
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  border: 2px solid #0ff;
+  background-color: transparent;
+  color: #0ff;
+  cursor: pointer;
+  text-shadow: 0 0 4px #0ff;
+  box-shadow: 0 0 10px #0ff;
+  transition: all 0.3s ease;
+}
+
+.view-button:hover {
+  background-color: rgb(87, 91, 197);
+  border-color: rgb(87, 91, 197);
+  color: rgb(255, 255, 255);
+  box-shadow: 0 0 15px rgb(87, 91, 197);
+}
+
+.summary-button:hover {
+  background-color: #5f5;
+  border-color: #5f5;
+  color: black;
+  box-shadow: 0 0 15px #5f5;
+}
