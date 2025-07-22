@@ -85,12 +85,13 @@ curl "http://localhost:8080/summary?url=https://example.com/article123"
 ├── src
 │   ├── main
 │   │   ├── java/com/pulsefeed
-│   │   │   ├── controller     # API endpoints
-│   │   │   ├── service        # Titan model logic
+│   │   │   ├── PulseFeedController.java     # API endpoints
+│   │   │   ├── Titan.java        # Titan model logic
+|   |   |   |── AwsClientConfig.java        # AWS Bedrock initializer
 │   │   │   └── PulsefeedApplication.java
 │   │   └── resources
 │   │       ├── application.properties
-│   │       └── .env           # AWS credentials (excluded from git)
+│   |── .env           # AWS credentials (excluded from git)
 ├── pom.xml
 └── README.md
 ```
