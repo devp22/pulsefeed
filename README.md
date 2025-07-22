@@ -78,26 +78,6 @@ curl "http://localhost:8080/summary?url=https://example.com/article123"
 
 ---
 
-## 📁 Project Structure
-
-```
-.
-├── src
-│   ├── main
-│   │   ├── java/com/pulsefeed
-│   │   │   ├── PulseFeedController.java     # API endpoints
-│   │   │   ├── Titan.java        # Titan model logic
-|   |   |   |── AwsClientConfig.java        # AWS Bedrock initializer
-│   │   │   └── PulsefeedApplication.java
-│   │   └── resources
-│   │       ├── application.properties
-│   |── .env           # AWS credentials (excluded from git)
-├── pom.xml
-└── README.md
-```
-
----
-
 ## 🤖 Model Details
 
 - **Model**: Titan Text G1
@@ -136,7 +116,7 @@ curl "http://localhost:8080/summary?url=https://example.com/article123"
 
 ## 📜 License
 
-This project is open-source and available under the [MIT License](https://github.com/devp22/pulsefeed/LICENSE).
+This project is open-source and available under the [MIT License](https://github.com/devp22/pulsefeed/blob/main/LICENSE).
 
 ---
 
